@@ -2,9 +2,11 @@ use bevy::prelude::*;
 
 mod event;
 mod node;
+mod resource;
 
-pub use event::SpawnHtml;
+pub use {event::SpawnHtml, resource::UiFonts};
 
+#[derive(Clone, Default)]
 pub struct HtmlUiPlugin;
 
 impl Plugin for HtmlUiPlugin {

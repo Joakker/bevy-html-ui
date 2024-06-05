@@ -13,6 +13,7 @@ bevy = { version = "0.13", default-features = false, features = [
   "bevy_render",
 ] }
 bevy_ecss = "0.7"
+bitflags = "2.5.0"
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
 bevy = { version = "0.13", features = [

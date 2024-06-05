@@ -1,7 +1,7 @@
 use bevy::prelude::*;
 use html_parser_rscx::Dom;
 
-use crate::node::spawn_node;
+use crate::{node::spawn_node, resource::TextFlags, UiFonts};
 
 #[derive(Event)]
 pub struct SpawnHtml {
@@ -13,6 +13,7 @@ pub fn spawn_ui(
     mut commands: Commands,
     mut event: EventReader<SpawnHtml>,
     asset_server: Res<AssetServer>,
+    fonts: Option<Res<UiFonts>>,
 ) {
     event.read().for_each(|SpawnHtml { contents, root }| {
         let Ok(Dom { children, .. }) = Dom::parse(contents) else {
@@ -27,6 +28,13 @@ pub fn spawn_ui(
             return;
         };
 
-        spawn_node(root_node, &mut commands, root, &asset_server);
+        spawn_node(
+            root_node,
+            &mut commands,
+            root,
+            &asset_server,
+            &fonts,
+            TextFlags::NORMAL,
+        );
     });
 }
