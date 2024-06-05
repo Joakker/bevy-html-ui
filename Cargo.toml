@@ -1,0 +1,31 @@
+[package]
+name = "bevy-html-ui"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+html_parser_rscx = "0.7.1"
+
+bevy = { version = "0.13", default-features = false, features = [
+  "bevy_ui",
+  "bevy_asset",
+  "bevy_text",
+  "bevy_render",
+] }
+bevy_ecss = "0.7"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
+bevy = { version = "0.13", features = [
+  "bevy_ui",
+  "bevy_asset",
+  "bevy_text",
+  "bevy_render",
+  "file_watcher",
+] }
+
+[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
+bevy = "0.13"
+
+[[example]]
+name = "minimal"
+path = "examples/minimal.rs"
