@@ -12,7 +12,7 @@ bevy = { version = "0.13", default-features = false, features = [
   "bevy_text",
   "bevy_render",
 ] }
-bevy_ecss = "0.7"
+# bevy_ecss = "0.7"
 bitflags = "2.5.0"
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
@@ -26,6 +26,10 @@ bevy = { version = "0.13", features = [
 
 [target.'cfg(target_arch = "wasm32")'.dev-dependencies]
 bevy = "0.13"
+
+[dependencies.bevy_ecss]
+git = "https://github.com/afonsolage/bevy_ecss.git"
+branch = "main"
 
 [[example]]
 name = "minimal"
